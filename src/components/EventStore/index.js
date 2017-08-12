@@ -32,3 +32,4 @@ class EventStore extends Component {
     ); 
   }
 }
+export default EventStore;
