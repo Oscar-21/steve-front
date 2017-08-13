@@ -14,7 +14,7 @@ class EventStore extends Component {
     ).then((response) => {
       return response.json();
     }).then((json) => {
-      this.setState({	events: json });
+      this.setState({ events: json });
     });
   }
 
