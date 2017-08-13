@@ -18,16 +18,29 @@ class EventStore extends Component {
     });
   }
 
-  showEvents = () => {
-    console.log(this.state.events);
-  }
-
   render() {
     return (
       <div>
 
         <h1>Events</h1>
-        <button onClick={this.showEvents}>Events</button>        
+
+        <table style={{border: "0px"}}>
+
+          <tr style={{background: "#cccccc"}}>
+            <td style={{width: "150px", textAlign: "center"}}>Name</td>
+            <td style={{width: "150px", textAlign: "center"}}>Category</td>
+            <td style={{width: "150px", textAlign: "center"}}>Date</td>
+          </tr>
+
+          { this.state.events.map((user) => (
+            <tr>
+                <td>{events.name}</td>
+                <td>{events.category}</td>
+                <td>{events.date}</td>
+            </tr>
+          ))}
+
+        </table>          
       </div>    
     ); 
   }
