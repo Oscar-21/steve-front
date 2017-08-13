@@ -32,9 +32,9 @@ class EventStore extends Component {
             <td style={{width: "150px", textAlign: "center"}}>Date</td>
           </tr>
 
-          { this.state.events.map((events) => (
+          { this.state.events.map((events, index) => (
             <tr>
-                <td>Test</td>
+                <td>{events.name}</td>
                 <td>{events.category}</td>
                 <td>{events.date}</td>
             </tr>
