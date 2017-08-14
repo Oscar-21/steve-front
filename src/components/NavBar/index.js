@@ -12,6 +12,7 @@ const NavBar = () => (
       <dt style={style}><Link to="/signup">Join us</Link></dt>
       <dt style={style}><Link to="/account">Account</Link></dt>
       <dt style={style}><Link to="/about">About</Link></dt>
+      <dt style={style}><Link to="/events/stuff">Stuff</Link></dt>
     </dl>
   </nav>
 );

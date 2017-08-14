@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../../assets/styles';
 
 class EventStore extends Component {
@@ -6,6 +7,7 @@ class EventStore extends Component {
     super();
     this.state = {
       events: [],
+      id: '',
       token: sessionStorage.getItem('token'),
     };
   }
@@ -17,6 +19,20 @@ class EventStore extends Component {
     }).then((json) => {
       this.setState({ events: json });
     });
+  }
+
+  handleJoin = (EventID) => {
+    fetch(`http:/\/react.app/api/join/${EventID}?token=${this.state.token}`
+    ).then((response) => { 
+      return response.json();
+    }).then((json) => {
+      this.setState({ id: json });
+      console.log(json);
+    });
+  }
+
+  handleLocation = () => {
+   console.log(this.state.id);
   }
 
   render() {
@@ -35,13 +51,14 @@ class EventStore extends Component {
 
           { this.state.events.map((events, index) => (
             <tr>
-                <td>{events.name}</td>
-                <td>{events.category}</td>
-                <td>{events.date}</td>
+            <td onClick={() => {this.handleJoin(events.id)} }>{events.name}</td>
+              <td>{events.category}</td>
+              <td>{events.date}</td>
             </tr>
           ))}
 
         </table>          
+        <button onClick={this.handleLocation}> Location </button>
       </div>    
     ); 
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Import UI components
 import Account from './components/Account';
@@ -7,8 +7,8 @@ import About from './components/About';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Home from './components/Home';
-import NavBar  from './components/NavBar';
-import EventStore  from './components/EventStore';
+import NavBar from './components/NavBar';
+import EventStore from './components/EventStore';
 
 class App extends Component {
   render() {
@@ -25,7 +25,8 @@ class App extends Component {
           <Route path='/events' component={EventStore} />
           <Route render= { function() { return <p>Not Found</p> } } />
         </Switch>
-
+	
+	
       </div>
     );
   }
