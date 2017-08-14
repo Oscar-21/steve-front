@@ -14,16 +14,13 @@ registerServiceWorker();
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router'
-import createBrowserHistory from 'history/createBrowserHistory'
+import { BrowserRouter } from 'react-router'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const history = createBrowserHistory();
-
 ReactDOM.render(
-  <Router history={history}>
+  <BrowserRouter>
     <App/>
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root'));
 registerServiceWorker();
