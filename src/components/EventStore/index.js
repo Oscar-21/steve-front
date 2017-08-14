@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../../assets/styles';
 
 class EventStore extends Component {
   constructor() {
@@ -24,12 +25,12 @@ class EventStore extends Component {
 
         <h1>Events</h1>
 
-        <table style={{border: "0px"}}>
+        <table style={styles.EventStore.tableStyle}>
 
-          <tr style={{background: "#cccccc"}}>
-            <td style={{width: "150px", textAlign: "center"}}>Name</td>
-            <td style={{width: "150px", textAlign: "center"}}>Category</td>
-            <td style={{width: "150px", textAlign: "center"}}>Date</td>
+          <tr style={styles.EventStore.tableRow}>
+            <td style={styles.EventStore.tableDataCell}>Name</td>
+            <td style={styles.EventStore.tableDataCell}>Category</td>
+            <td style={styles.EventStore.tableDataCell}>Date</td>
           </tr>
 
           { this.state.events.map((events, index) => (
