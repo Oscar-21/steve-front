@@ -21,7 +21,7 @@ class EventStore extends Component {
   }
 
   handleJoin = (EventID, EventName, Participants) => {
-    fetch(`http:/\/react.app/api/join/${EventID}/{Participants}?token=${this.state.token}`
+    fetch(`http:/\/react.app/api/join/${EventID}/${Participants}?token=${this.state.token}`
     ).then((response) => { 
       return response.json();
     }).then((json) => {
