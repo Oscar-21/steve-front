@@ -33,7 +33,6 @@ const NavBar = () => (
       <dt style={style}><Link to="/account">Account</Link></dt>
       <dt style={style}><Link to="/about">About</Link></dt>
       <a style={logoutStyle} onClick={logout}><dt style={style}>Logout</dt></a>
-      <dt style={style}><Link to="/grid">Grid</Link></dt>
     </dl>
   </nav>
 );

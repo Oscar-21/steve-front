@@ -9,7 +9,6 @@ import SignIn from './components/SignIn';
 import Home from './components/Home';
 import EventStore from './components/EventStore';
 import NavBar from './components/NavBar';
-import Grid from './components/Grid';
 
 class App extends Component {
   render() {
@@ -25,7 +24,6 @@ class App extends Component {
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={SignIn} />
           <Route path='/events' component={EventStore} />
-          <Route path='/grid' component={Grid} />
           <Route render= { function() { return <p>Not Found</p> } } />
         </Switch>
 	
