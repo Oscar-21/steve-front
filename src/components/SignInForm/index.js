@@ -32,11 +32,9 @@ class SignUpForm extends Component {
     }).then( json => { 
       if (json.error) {
         alert(json.error);
-      } 
-      else if (json.token === false) {
+      } else if (json.token === false) {
         alert('invalid credentials');
-      } 
-      else if (json.token !== false) {
+      } else if (json.token !== false) {
         alert('Welcome Back!');
         sessionStorage.setItem('token', json.token);
       }

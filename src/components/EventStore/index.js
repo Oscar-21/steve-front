@@ -7,7 +7,6 @@ class EventStore extends Component {
     super();
     this.state = {
       events: [],
-      id: '',
       token: sessionStorage.getItem('token'),
     };
   }
@@ -21,13 +20,16 @@ class EventStore extends Component {
     });
   }
 
-  handleJoin = (EventID) => {
+  handleJoin = (EventID, EventName) => {
     fetch(`http:/\/react.app/api/join/${EventID}?token=${this.state.token}`
     ).then((response) => { 
       return response.json();
     }).then((json) => {
-      this.setState({ id: json });
-      console.log(json);
+      if (json.error) {
+        alert(json.error)
+      } else if (json.success) {
+        alert(`joined ${EventName}`);
+      }
     });
   }
 
@@ -51,7 +53,14 @@ class EventStore extends Component {
 
           { this.state.events.map((events, index) => (
             <tr>
-            <td style={styles.EventStore.eventName} onClick={() => {this.handleJoin(events.id)} }>{events.name}</td>
+              <td 
+                style={styles.EventStore.eventName} 
+                onClick={() => {
+                  this.handleJoin(events.id, events.name)} 
+                }
+              >
+                {events.name}
+              </td>
               <td>{events.category}</td>
               <td>{events.date}</td>
             </tr>
