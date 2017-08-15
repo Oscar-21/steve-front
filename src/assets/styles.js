@@ -26,6 +26,11 @@ const styles = {
       width: '150px',
       textAlign: 'center', 
     },
+
+    eventName: {
+      cursor: 'pointer',
+    },
+
   }
 }
 export default styles;

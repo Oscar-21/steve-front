@@ -51,7 +51,7 @@ class EventStore extends Component {
 
           { this.state.events.map((events, index) => (
             <tr>
-            <td onClick={() => {this.handleJoin(events.id)} }>{events.name}</td>
+            <td style={styles.EventStore.eventName} onClick={() => {this.handleJoin(events.id)} }>{events.name}</td>
               <td>{events.category}</td>
               <td>{events.date}</td>
             </tr>
