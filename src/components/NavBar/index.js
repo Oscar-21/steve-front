@@ -24,16 +24,14 @@ const logout = () => {
 }
 
 const NavBar = () => (
-  <nav>
-    <dl style={{display: 'flex'}}>
-      <dt style={style}><Link to="/">Home</Link></dt>
-      <dt style={style}><Link to="/events">Events</Link></dt>
-      <dt style={style}><Link to="/login">Login</Link></dt>
-      <dt style={style}><Link to="/signup">Join us</Link></dt>
-      <dt style={style}><Link to="/account">Account</Link></dt>
-      <dt style={style}><Link to="/about">About</Link></dt>
+  <nav style={{display: 'flex', flexDirection: 'row'}}>
+      <Link style={style} to="/">Home</Link>
+      <Link style={style} to="/events">Events</Link>
+      <Link style={style} to="/login">Login</Link>
+      <Link style={style} to="/signup">Join us</Link>
+      <Link style={style} to="/account">Account</Link>
+      <Link style={style} to="/about">About</Link>
       <a style={logoutStyle} onClick={logout}><dt style={style}>Logout</dt></a>
-    </dl>
   </nav>
 );
 export default NavBar;
