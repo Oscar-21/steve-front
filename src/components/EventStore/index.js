@@ -20,8 +20,8 @@ class EventStore extends Component {
     });
   }
 
-  handleJoin = (EventID, EventName) => {
-    fetch(`http:/\/react.app/api/join/${EventID}?token=${this.state.token}`
+  handleJoin = (EventID, EventName, Participants) => {
+    fetch(`http:/\/react.app/api/join/${EventID}/{Participants}?token=${this.state.token}`
     ).then((response) => { 
       return response.json();
     }).then((json) => {
@@ -56,7 +56,7 @@ class EventStore extends Component {
               <td 
                 style={styles.EventStore.eventName} 
                 onClick={() => {
-                  this.handleJoin(events.id, events.name)} 
+                  this.handleJoin(events.id, events.name, events.participants)} 
                 }
               >
                 {events.name}
