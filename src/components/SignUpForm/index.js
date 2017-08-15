@@ -72,7 +72,6 @@ class SignUpForm extends Component {
         <input type="file" name="avatar" onChange={this.handleAvatar} />
         <img src={this.state.preview} alt="" /> 
 
-        <label> Sign up </label>
         <button onClick={this.storeUser}> Sign up </button>
       </div>
     );

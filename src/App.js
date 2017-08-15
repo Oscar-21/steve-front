@@ -7,14 +7,16 @@ import About from './components/About';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Home from './components/Home';
-import NavBar from './components/NavBar';
 import EventStore from './components/EventStore';
+import NavBar from './components/NavBar';
+import Grid from './components/Grid';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />	
+
+        <NavBar />
 
         <Switch>
           <Route exact path='/' component={Home} />
@@ -23,9 +25,9 @@ class App extends Component {
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={SignIn} />
           <Route path='/events' component={EventStore} />
+          <Route path='/grid' component={Grid} />
           <Route render= { function() { return <p>Not Found</p> } } />
         </Switch>
-	
 	
       </div>
     );

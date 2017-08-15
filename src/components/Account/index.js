@@ -50,11 +50,18 @@ class Account extends React.Component {
     return ( 
       <div>
 	
-	<h1>Create Event</h1>	
+	<h1>Create Event</h1>
+
+        <label> Event name </label>
 	<input type="text" name="name" onChange={this.handleName} />
+
+        <label> Category </label>
 	<input type="text" name="category" onChange={this.handleCategory} />
+
+        <label> Date </label>
 	<input type="text" name="date" onChange={this.handleDate} />
-	<button onClick={this.storeMeeting}>Button</button>
+
+	<button onClick={this.storeMeeting}>Create event</button>
 
 	<hr />
 

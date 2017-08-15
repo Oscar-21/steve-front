@@ -3,6 +3,26 @@ import { Link } from 'react-router-dom';
 
 const style = { marginRight: '15px' };
 
+const logoutStyle = {
+  cursor: 'pointer',
+  color: 'blue',
+  textDecoration: 'underline',
+};
+
+const logout = () => {
+  fetch(`http://react.app/api/logout?token=${sessionStorage.getItem('token')}`
+  ).then((response) => {
+    return response.json();
+  }).then((json) => {
+    if (json.error) {
+      alert(json.error);
+    } else if (json.success) {
+      alert(json.success); 
+      sessionStorage.setItem('token', '');
+    }
+  });
+}
+
 const NavBar = () => (
   <nav>
     <dl style={{display: 'flex'}}>
@@ -12,7 +32,8 @@ const NavBar = () => (
       <dt style={style}><Link to="/signup">Join us</Link></dt>
       <dt style={style}><Link to="/account">Account</Link></dt>
       <dt style={style}><Link to="/about">About</Link></dt>
-      <dt style={style}><Link to="/events/stuff">Stuff</Link></dt>
+      <a style={logoutStyle} onClick={logout}><dt style={style}>Logout</dt></a>
+      <dt style={style}><Link to="/grid">Grid</Link></dt>
     </dl>
   </nav>
 );

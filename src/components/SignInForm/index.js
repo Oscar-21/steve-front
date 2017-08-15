@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-class SignUpForm extends Component {
+class SignInForm extends Component {
   constructor() {
     super();
     this.state = {
        password: '',
        email: '',
-       token: '',
-       foo: '',
+       redirect: [],
     };
   }
 
@@ -37,6 +37,7 @@ class SignUpForm extends Component {
       } else if (json.token !== false) {
         alert('Welcome Back!');
         sessionStorage.setItem('token', json.token);
+        this.setState({ redirect: <Redirect to="/login" /> });
       }
     });
   }
@@ -50,10 +51,11 @@ class SignUpForm extends Component {
         <label> Password </label>
         <input type="text" name="password" onChange={this.handlePassword} /> 
 
-        <label> Sign up </label>
-        <button onClick={this.login}> Sign up </button>
+        <button onClick={this.login}> Login </button>
+        {this.state.redirect}
+
       </div>
     );
   }
 }
-export default SignUpForm;
+export default SignInForm;
