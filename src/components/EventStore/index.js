@@ -1,11 +1,18 @@
+/**
+*
+* Grid
+*
+*/
+
 import React, { Component } from 'react';
-import styles from '../../assets/styles';
+import './style.css';
+import './styleM.css';
+
 class EventStore extends Component {
   constructor() {
     super();
     this.state = {
       events: [],
-      token: sessionStorage.getItem('token'),
     };
   }
 
@@ -18,8 +25,9 @@ class EventStore extends Component {
     });
   }
 
+
   handleJoin = (EventID, EventName, Participants) => {
-    fetch(`http://react.app/api/join/${EventID}/${Participants}?token=${this.state.token}`
+    fetch(`http://react.app/api/join/${EventID}/${Participants}?token=${sessionStorage.getItem('token')}`
     ).then((response) => { 
       return response.json();
     }).then((json) => {
@@ -34,35 +42,23 @@ class EventStore extends Component {
   render() {
     return (
       <div>
-
-        <h1>Events</h1>
-
-        <table style={styles.EventStore.tableStyle}>
-
-          <tr style={styles.EventStore.tableRow}>
-            <td style={styles.EventStore.tableDataCell}>Name</td>
-            <td style={styles.EventStore.tableDataCell}>Category</td>
-            <td style={styles.EventStore.tableDataCell}>Date</td>
-          </tr>
+        <div className="grid">
 
           { this.state.events.map((events, index) => (
-            <tr>
-              <td 
-                style={styles.EventStore.eventName} 
-                onClick={() => {
-                  this.handleJoin(events.id, events.name, events.participants)} 
-                }
-              >
-                {events.name}
-              </td>
-              <td>{events.category}</td>
-              <td>{events.date}</td>
-            </tr>
+              <div className="gridItem">
+                <img
+                  onClick={ () => {this.handleJoin(events.id, events.name, events.participants)} }
+                  src={require('../../images/gridOne.jpg')} 
+                  className="gridImage" 
+                  alt="" 
+                />
+                {events.name} {events.category} {events.date}
+              </div>
           ))}
 
-        </table>          
-      </div>    
-    ); 
+        </div>
+      </div>
+    );
   }
 }
 export default EventStore;

@@ -8,6 +8,7 @@ class SignInForm extends Component {
        password: '',
        email: '',
        redirect: [],
+      // test: 'before',
     };
   }
 
@@ -37,10 +38,12 @@ class SignInForm extends Component {
       } else if (json.token !== false) {
         alert('Welcome Back!');
         sessionStorage.setItem('token', json.token);
+        //this.setState( {test: 'after' });
         this.setState({ redirect: <Redirect to="/login" /> });
       }
     });
   }
+
 
   render() {
     return (
@@ -53,6 +56,7 @@ class SignInForm extends Component {
 
         <button onClick={this.login}> Login </button>
         {this.state.redirect}
+
 
       </div>
     );
