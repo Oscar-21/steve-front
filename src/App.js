@@ -11,6 +11,19 @@ import EventStore from './components/EventStore';
 import NavBar from './components/NavBar';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+    };
+    this.handleLoggedIn = this.handleLoggedIn.bind(this);
+  }
+
+  handleLoggedIn() {
+    console.log('testme');
+    //this.setState({ loggedIn: true, });
+  }
+   
   render() {
     return (
       <div>
@@ -22,7 +35,7 @@ class App extends Component {
           <Route path='/about' component={About} />
           <Route path='/account' component={Account} />
           <Route path='/signup' component={SignUp} />
-          <Route path='/login' component={SignIn} />
+          <Route path='/login' render={() => <SignIn stuff={this.handleLoggedIn} />} />
           <Route path='/events' component={EventStore} />
           <Route render= { function() { return <p>Not Found</p> } } />
         </Switch>

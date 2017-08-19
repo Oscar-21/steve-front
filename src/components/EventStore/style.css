@@ -9,10 +9,12 @@
 
 .gridItem {
   width:23%;
+  height: 150px;
   margin:15px;
 }
 
 .gridImage {
+  height: 100%;
   width:100%;
 }
 

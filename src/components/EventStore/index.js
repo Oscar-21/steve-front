@@ -18,9 +18,9 @@ class EventStore extends Component {
 
   componentWillMount() {
     fetch('http://react.app/api/events'
-    ).then((response) => {
-      return response.json();
-    }).then((json) => {
+    ).then(response => 
+      response.json()
+    ).then((json) => {
       this.setState({ events: json });
     });
   }
@@ -48,14 +48,14 @@ class EventStore extends Component {
               <div className="gridItem">
                 <img
                   onClick={ () => {this.handleJoin(events.id, events.name, events.participants)} }
-                  src={require('../../images/gridOne.jpg')} 
+                  src={events.image} 
                   className="gridImage" 
                   alt="" 
                 />
                 {events.name} {events.category} {events.date}
               </div>
           ))}
-
+        test
         </div>
       </div>
     );

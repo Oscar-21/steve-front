@@ -37,6 +37,7 @@ class SignInForm extends Component {
         alert('invalid credentials');
       } else if (json.token !== false) {
         alert('Welcome Back!');
+        this.props.check();
         sessionStorage.setItem('token', json.token);
         //this.setState( {test: 'after' });
         this.setState({ redirect: <Redirect to="/login" /> });

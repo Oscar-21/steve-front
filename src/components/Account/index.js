@@ -1,70 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
+import CreateEvent from '../CreateEvent';
+import UserProfile from '../UserProfile';
 
-class Account extends React.Component {
+class Account extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',	
-      date: '',	
-      category: '',	 
-      token: sessionStorage.getItem('token'),
+      component: <UserProfile />,
     };
   }
 
-  handleName = (e) => {
-    this.setState({ name: e.target.value });
-  }
-
-  handleCategory = (e) => {
-    this.setState({ category: e.target.value });
-  }
-
-  handleDate = (e) => {
-    this.setState({ date: e.target.value });
-  }
-
-
-  storeMeeting = () => {
-    const data = new FormData();
-    data.append('name', this.state.name);
-    data.append('category', this.state.category);
-    data.append('date', this.state.date);
-
-    fetch('http://react.app/api/savemeet', {
-      headers: { 'Authorization': 'Bearer ' + this.state.token },
-      method: 'post',
-      body: data, 
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
-      if (json.error) {
-        alert(json.error);
-      } else if (json.success) {
-        alert(json.success);
+  CheckLogIn = () => {
+      if ( sessionStorage.getItem('token') == null ) {
+        this.props.history.push('/signup'); 
       }
-    });
   }
+
+
+  MakeEventPage = () => {
+    console.log(typeof <CreateEvent />);
+    this.setState({ component: <CreateEvent /> });
+  }
+
+  ProfilePage = () => {
+    this.setState({ component: <UserProfile /> });
+  }
+
 
   render() {
+    const AccountNav = {
+      marginTop: '15px',
+      cursor: 'pointer',
+      color: 'blue',
+      textDecoration: 'underline',
+    };
 
-    return ( 
+    return (
       <div>
-	
-	<h1>Create Event</h1>
-
-        <label> Event name </label>
-	<input type="text" name="name" onChange={this.handleName} />
-
-        <label> Category </label>
-	<input type="text" name="category" onChange={this.handleCategory} />
-
-        <label> Date </label>
-	<input type="text" name="date" onChange={this.handleDate} />
-
-	<button onClick={this.storeMeeting}>Create event</button>
-
-	<hr />
-
+        {this.CheckLogIn()}
+        <h1 style={{marginTop: '50px'}}> Dashboard </h1>
+          <nav style={{display: 'flex', flexDirection: 'column' }}>
+            <a style={AccountNav} onClick={this.ProfilePage}> Profile </a>
+            <a style={AccountNav} onClick={this.MakeEventPage}> Create event </a>
+          </nav>
+            {this.state.component}
+            <button onClick={this.handleTest}> test </button>
       </div>
     );
   }
